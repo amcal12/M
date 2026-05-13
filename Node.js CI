@@ -1,6 +1,10 @@
-name: Node.js CI
+name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -8,9 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - name: Use Node.js 24
+      uses: actions/setup-node@v3
       with:
-        node-version: '14' # نسخه مورد نظر Node.js
+        node-version: '24'
     - run: npm install
     - run: npm test
